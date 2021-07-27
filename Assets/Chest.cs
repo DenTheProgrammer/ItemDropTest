@@ -13,8 +13,8 @@ public class Chest : MonoBehaviour
         //OpenMultipleChests(10000, itemList);
         //print(TestA(itemList));
         
-        //print(TestC(itemList));
-        print(TestD(itemList));
+        print(TestC(itemList));
+        //print(TestD(itemList));
         //print(TestE(itemList));
     }
 
@@ -24,7 +24,7 @@ public class Chest : MonoBehaviour
     {
         print("test d:");
         int chestsOpened = 0;
-        int testCount = 5000000;
+        int testCount = 1000000;
 
         for (int i = 0; i < testCount; i++)
         {
