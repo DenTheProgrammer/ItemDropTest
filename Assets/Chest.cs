@@ -10,12 +10,12 @@ public class Chest : MonoBehaviour
     void Start()
     {
         List<Item> itemList = InitializeItemList();
-        //OpenMultipleChests(10000, itemList);
-        //print(TestA(itemList));
+        OpenMultipleChests(10000, itemList);
+        print(TestA(itemList));
         
         print(TestC(itemList));
-        //print(TestD(itemList));
-        //print(TestE(itemList));
+        print(TestD(itemList));
+        print(TestE(itemList));
     }
 
 
@@ -45,10 +45,10 @@ public class Chest : MonoBehaviour
 
 
     //Сколько человек из тысячи получит три монеты, открыв первые пять ящиков?
-    public int TestE(List<Item> itemList)
+    public float TestE(List<Item> itemList)
     {
         print("test e:");
-        int peopleCount = 100000;
+        int peopleCount = 1000000;
         int chestCount = 5;
         int threeCoinPeopleCount = 0;
 
@@ -65,7 +65,7 @@ public class Chest : MonoBehaviour
                 threeCoinPeopleCount++;
         }
         print("threeCoinPeopleCount fraction = " + threeCoinPeopleCount / (float)peopleCount);
-        return threeCoinPeopleCount;
+        return threeCoinPeopleCount / (float)peopleCount * 1000;
     }
 
     //Какова вероятность, что из первых ста открытых ящиков не выпадет ни одного пистолета?
@@ -159,7 +159,7 @@ public class Chest : MonoBehaviour
     {
         print("test a:");
         int oreCount = 0;
-        int testCount = 10000;
+        int testCount = 100000;
         
         for (int i = 0; i < testCount; i++)
         {
