@@ -10,14 +10,77 @@ public class Chest : MonoBehaviour
     void Start()
     {
         List<Item> itemList = InitializeItemList();
-        OpenMultipleChests(10000, itemList);
-        print(TestA(itemList));
+        OpenMultipleChests(1000, itemList);
+        print(TestOne(itemList));
+        print(TestTwo(itemList));
+        print(TestThree(itemList));
+        /*print(TestA(itemList));
         
         print(TestC(itemList));
         print(TestD(itemList));
-        print(TestE(itemList));
+        print(TestE(itemList));*/
     }
 
+
+    public float TestOne(List<Item> itemList)
+    {
+        print("test one:");
+        int successOpens = 0;
+        int testCount = 1000000;
+
+        for (int i = 0; i < testCount; i++)
+        {
+            Item droppedItem = OpenChest(itemList);
+            if (droppedItem.itemType == ItemType.ImplantA || droppedItem.itemType == ItemType.ImplantB)
+            {
+                successOpens++;
+            }
+        }
+
+        return successOpens / (float)testCount;
+    }
+
+    public float TestTwo(List<Item> itemList)
+    {
+        print("test two:");
+        int successCount = 0;
+        int testCount = 1000000;
+
+        for (int i = 0; i < testCount; i++)
+        {
+            Item droppedItem1 = OpenChest(itemList);
+            Item droppedItem2 = OpenChest(itemList);
+            if (droppedItem1.itemType == ItemType.ImplantA || droppedItem1.itemType == ItemType.ImplantB)
+            {
+                if (droppedItem2.itemType == ItemType.ImplantA || droppedItem2.itemType == ItemType.ImplantB)
+                {
+                    successCount++;
+                }   
+            }
+        }
+
+        return successCount / (float)testCount;
+    }
+
+    public float TestThree(List<Item> itemList)
+    {
+        print("test three:");
+        int successCount = 0;
+        int testCount = 1000000;
+
+        for (int i = 0; i < testCount; i++)
+        {
+            Item droppedItem1 = OpenChest(itemList);
+            Item droppedItem2 = OpenChest(itemList);
+            if ((droppedItem1.itemType == ItemType.Brobot && droppedItem2.itemType == ItemType.Weapon) ||
+                (droppedItem1.itemType == ItemType.Weapon && droppedItem2.itemType == ItemType.Brobot))
+            {
+                successCount++;
+            }
+        }
+
+        return successCount / (float)testCount;
+    }
 
     //Если монета, руда и аптечка могут выпасть только один раз, то сколько нужно открыть ящиков, чтобы получить пистолет?
     public float TestD(List<Item> itemList)
@@ -96,11 +159,11 @@ public class Chest : MonoBehaviour
     private List<Item> InitializeItemList()
     {
         List<Item> itemList = new List<Item>();
-        itemList.Add(new Item(ItemType.Pistol, 1));
-        itemList.Add(new Item(ItemType.Helmet, 5));
-        itemList.Add(new Item(ItemType.Ore, 15));
-        itemList.Add(new Item(ItemType.Medkit, 25));
-        itemList.Add(new Item(ItemType.Coin, 100));
+        itemList.Add(new Item(ItemType.Brobot, 10));
+        itemList.Add(new Item(ItemType.Weapon, 15));
+        itemList.Add(new Item(ItemType.Armor, 15));
+        itemList.Add(new Item(ItemType.ImplantA, 30));
+        itemList.Add(new Item(ItemType.ImplantB, 30));
         return itemList;
     }
 
@@ -177,4 +240,6 @@ public class Chest : MonoBehaviour
         
         return oreCount / (float)testCount;
     }
+
+
 }

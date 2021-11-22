@@ -20,7 +20,12 @@ public enum ItemType
     Medkit,
     Ore,
     Coin,
-    Pistol
+    Pistol,
+    Brobot,
+    Weapon,
+    Armor,
+    ImplantA,
+    ImplantB
 }
 
 
